@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build
 on:
   push:
     branches: [ master ]
@@ -8,13 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    # checkout
     - uses: actions/checkout@v2
       with:
         submodules: true
-    - run: sh ./build.sh
+    # get dockcross
+    - run: docker run --rm dockcross/linux-x64 > ./dockcross
+    # mark dockcross executable
+    - run: chmod +x ./dockcross
+    # make defconfig + make bzImage
+    - run: ./dockcross sh -c "cd linux && make defconfig && make bzImage"
+    # upload to build artifact
     - uses: actions/upload-artifact@v2
       with:
-        path: linux/arch/i386/boot/bzImage
+        path: linux/arch/x86/boot/bzImage
     - uses: actions/upload-artifact@v2
       with:
         path: linux/.config
