@@ -12,3 +12,9 @@ jobs:
       with:
         submodules: true
     - run: sh ./build.sh
+    - uses: actions/upload-artifact@v2
+      with:
+        path: linux/arch/i386/boot/bzImage
+    - uses: actions/upload-artifact@v2
+      with:
+        path: linux/.config
