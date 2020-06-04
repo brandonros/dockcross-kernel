@@ -1,0 +1,5 @@
+name: 'Build'
+description: 'Builds Linux kernel using dockcross/linux-x64'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
