@@ -1,5 +1,3 @@
 #!/bin/sh
 cd linux
-docker run --rm dockcross/linux-x64 > dockcross
-chmod +x dockcross
-./dockcross make deconfig
+../dockcross-linux-x64 make deconfig
