@@ -1,2 +1,2 @@
 #!/bin/sh
-./dockcross-linux-x64 sh -c "cd linux && make defconfig && make dep && make clean && make bzImage"
+./dockcross-linux-x64 sh -c "cd linux && make defconfig && make bzImage"
