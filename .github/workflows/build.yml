@@ -1,5 +1,15 @@
-name: 'Build'
-description: 'Builds Linux kernel using dockcross/linux-x64'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+name: Docker Image CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: docker run --rm dockcross/linux-x64 > ./dockcross
+    - run: chmod +x ./dockcross
+    - run: ./dockcross make deconfig
+
