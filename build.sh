@@ -1,3 +1,2 @@
 #!/bin/sh
-cd linux
-../dockcross-linux-x64 make deconfig
+./dockcross-linux-x64 sh -c "cd linux && make defconfig"
