@@ -9,7 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: docker run --rm dockcross/linux-x64 > ./dockcross
-    - run: chmod +x ./dockcross
-    - run: cd linux
-    - run: ../dockcross make deconfig
+    - run: sh build.sh
